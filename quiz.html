@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квиз</title>
+    <link rel="stylesheet" href="css/styles_quiz.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="teams">
+            
+            <p id="current-team"></p>
+            <h2>Команды</h2>
+            <ul id="team-list"></ul>
+            
+        </div>
+        
+        <div class="quiz-board">
+            <div class="category">
+                <h3>Биография писателя</h3>
+                <button class="quiz-button" data-category="Биография писателя" data-value="100">100</button>
+                <button class="quiz-button" data-category="Биография писателя" data-value="200">200!</button>
+                <button class="quiz-button" data-category="Биография писателя" data-value="300">300</button>
+            </div>
+        
+            <div class="category">
+                <h3>Сюжет произведения</h3>
+                <button class="quiz-button" data-category="Сюжет произведения" data-value="100">100!</button>
+                <button class="quiz-button" data-category="Сюжет произведения" data-value="200">200</button>
+                <button class="quiz-button" data-category="Сюжет произведения" data-value="300">300</button>
+            </div>
+        
+            <div class="category">
+                <h3>Тема, идея, творческое своеобразие</h3>
+                <button class="quiz-button" data-category="Тема, идея, творческое своеобразие" data-value="100">100</button>
+                <button class="quiz-button" data-category="Тема, идея, творческое своеобразие" data-value="200">200</button>
+                <button class="quiz-button" data-category="Тема, идея, творческое своеобразие" data-value="300">300!</button>
+            </div>
+        </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2 id="question-category"></h2>
+            <p id="question-text"></p>
+            <input type="text" id="answer-input" placeholder="Введите ваш ответ" />
+            <br />
+            <button id="submit-answer">Ответить</button>
+        </div>
+    </div>
+    
+    <script src="js/js_quiz.js"></script>
+</body>
+</html>
